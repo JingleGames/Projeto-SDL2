@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar SDL2",
+      "type": "shell",
+      "command": "/bin/bash",
+      "args": [
+        "-c",
+        "gcc -o grafico_barras grafico_barras.c $(pkg-config --cflags --libs sdl2)"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Rodar gráfico",
+      "type": "shell",
+      "command": "./grafico_barras",
+      "dependsOn": "Compilar SDL2",
+      "group": "test",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    }
+  ]
+}
